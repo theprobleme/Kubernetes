@@ -5,8 +5,6 @@
 Pour la master : 
 - On peut utiliser les images de conteneur déjà existantes. Pas besoin de repartir de la solution Docker.
 - Au niveau du site web à héberger, on peut soit partir d'un wordpress soit on suit des tutoriels du site de Kubernetes et on envisage l'installation d'une application Node.js par exemple.
-- Pour l'installation du réseau : gbp et/ou vxlan.
-- 
 
 ## Pré-requis
 
