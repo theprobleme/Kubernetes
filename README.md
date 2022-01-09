@@ -176,7 +176,7 @@ hostnamectl set-hostname node-boutin
 ### Ajout du dashboard
 
 ````bash
-http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/aio/deploy/recommended.yaml
 ````
 
 ### Création d'un compte administrateur
