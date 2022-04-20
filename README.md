@@ -85,7 +85,7 @@ swapoff -a
 ### Initialiser kubadmn
 
 ````bash
-kubeadm init --prod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=192.168.4.94
+kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=192.168.4.94
 
 Your Kubernetes control-plane has initialized successfully!
 
