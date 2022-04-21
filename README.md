@@ -10,8 +10,6 @@ Pour la master :
 
 Il faut changer le CPU à 2 pour que la machine fonctionne.
 
-
-
 ## Installation
 
 ### Assurer que br_netfilter est chargé
@@ -21,6 +19,10 @@ lsmod | grep br_netfilter
 br_netfilter		32768	0
 bridge				253952	1	br_netfilter
 `````
+Si la commande ne renvoie rien :
+```bash
+sudo modprobe br_netfilter
+```
 
 ### Modification des configuration sysctl
 
@@ -197,6 +199,26 @@ sudo apt-mark hold kubelet kubeadm kubectl
 ```bash
 echo 1 > /proc/sys/net/ipv4/ip_forward
 ```
+### Assurer que br_netfilter est chargé
+
+`````bash
+lsmod | grep br_netfilter
+br_netfilter		32768	0
+bridge				253952	1	br_netfilter
+`````
+Si la commande ne renvoie rien :
+```bash
+sudo modprobe br_netfilter
+```
+### Modification des configuration sysctl
+
+````bash
+cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+EOF
+sudo sysctl --system
+````
 
 ### Connexion au noeud
 
