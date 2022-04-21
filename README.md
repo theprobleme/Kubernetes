@@ -154,6 +154,50 @@ No resources found in default namespace.
 
 ## Installation des nodes
 
+### Pré-requis
+#### Installer le binaire de kubectl avec curl sur Linux
+
+````bash
+curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+````
+
+#### Rendre le binaire kubectl exécutable
+
+````bash
+chmod +x ./kubectl
+````
+
+#### Déplacement du binaire dans le PATH
+
+````bash
+sudo mv ./kubectl /usr/local/bin/kubectl
+````
+
+#### Test
+
+````bash
+kubectl version --client
+Client Version: version.Info{Major:"1", Minor:"23", GitVersion:"v1.23.0", GitCommit:"ab69524f795c42094a6630298ff53f3c3ebab7f4", GitTreeState:"clean", BuildDate:"2021-12-07T18:16:20Z", GoVersion:"go1.17.3", Compiler:"gc", Platform:"linux/amd64"}
+````
+
+### Installation de kubelet and kubeadm
+
+````bash
+sudo apt-get update && sudo apt-get install -y apt-transport-https curl
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
+deb https://apt.kubernetes.io/ kubernetes-xenial main
+EOF
+sudo apt-get update
+sudo apt-get install -y kubelet kubeadm kubectl
+sudo apt-mark hold kubelet kubeadm kubectl
+````
+
+### Ipv4 Fowarding
+```bash
+echo 1 > /proc/sys/net/ipv4/ip_forward
+```
+
 ### Connexion au noeud
 
 ````
