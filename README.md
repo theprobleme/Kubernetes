@@ -338,6 +338,7 @@ eyJhbGciOiJSUzI1NiIsImtpZCI6IlJTcnZEWUhtbVJTTS1rYjZPTTY4R2RJUWhkSXVOaGNVdEw2c3dp
 ````
 ssh -L 8001:127.0.0.1:8001 master@192.168.23.110
 ````
+> Il est nécessaire d'ensuite se connecter en tant que root
 
 ### Lancement du proxy
 
@@ -441,6 +442,7 @@ openebs-ndm-operator-5b578fd9c6-n4wlk           1/1     Running   0          53m
 #### Liste des storage class
 
 ````
+kubectl get storageClass
 NAME               PROVISIONER        RECLAIMPOLICY   VOLUMEBINDINGMODE      ALLOWVOLUMEEXPANSION   AGE
 openebs-device     openebs.io/local   Delete          WaitForFirstConsumer   false                  92m
 openebs-hostpath   openebs.io/local   Delete          WaitForFirstConsumer   false                  92m
@@ -448,7 +450,7 @@ openebs-hostpath   openebs.io/local   Delete          WaitForFirstConsumer   fal
 
 #### Ajout de cStor
 
-```è
+```
 kubectl apply -f https://openebs.github.io/charts/cstor-operator.yaml
 ```
 
